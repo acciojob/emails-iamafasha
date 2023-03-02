@@ -24,7 +24,7 @@ public class Email {
             !newPassword.equals(newPassword.toLowerCase() &&
             !newPassword.equals(newPassword.toUpperCase() &&
              newPassword.matches(".*\\d.*") &&
-             newPassword.matches(".*[^a-zA-Z0-9].*")&&
+             newPassword.matches(".*[^a-zA-Z0-9].*")
         ){
             this.password = newPassword;
         }
