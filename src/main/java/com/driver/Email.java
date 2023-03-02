@@ -21,8 +21,8 @@ public class Email {
     public void changePassword(String oldPassword, String newPassword){
         if(oldPassword == password &&
              newPassword.length() >= 8 &&
-            !newPassword.equals(newPassword.toLowerCase() &&
-            !newPassword.equals(newPassword.toUpperCase() &&
+            !newPassword.equals(newPassword.toLowerCase()) &&
+            !newPassword.equals(newPassword.toUpperCase()) &&
              newPassword.matches(".*\\d.*") &&
              newPassword.matches(".*[^a-zA-Z0-9].*")
         ){
