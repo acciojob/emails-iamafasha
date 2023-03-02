@@ -49,20 +49,20 @@ public class Gmail extends Email {
         // If the inbox is empty, return null
         // Else, return the message of the latest mail present in the inbox
 
-        return inbox.size() != 0 ? inbox.get(inbox.size()-1):null;
+        return inbox.size() > 0 ? inbox.get(inbox.size()-1).message:null;
     }
 
     public String findOldestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the oldest mail present in the inbox
-        return inbox.size() != 0 ? inbox.get(0):null;
+        return inbox.size() > 0 ? inbox.get(0).message:null;
     }
 
     public int findMailsBetweenDates(Date start, Date end){
         //find number of mails in the inbox which are received between given dates
         //It is guaranteed that start date <= end date
 
-        return (ArrayList<Mail>) CollectionUtils.select(inbox, mail -> (mail.date.after(start) && mail.end.before(end)));
+        return ((ArrayList<Mail>) CollectionUtils.select(inbox, mail -> (mail.date.after(start) && mail.end.before(end)))).size();
 
     }
 
