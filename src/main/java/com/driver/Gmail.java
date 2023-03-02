@@ -12,6 +12,8 @@ public class Gmail extends Email {
     //Trash: Stores mails. Each mail has date (Date), sender (String), message (String)
     public Gmail(String emailId, int inboxCapacity) {
         super(emailId);
+        inbox = new ArrayList<Mail>();
+        trash = new ArrayList<Mail>();
         this.inboxCapacity = inboxCapacity;
     }
 
