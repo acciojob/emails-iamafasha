@@ -65,7 +65,7 @@ public class Gmail extends Email {
 
         for(int i = 0; i <  inbox.size() ;i++){
             Mail mail = inbox.get(i);
-            if(mail.date.after(start) && mail.date.befor(end)){
+            if(mail.date.after(start) && mail.date.before(end)){
                 count++;
             }
         }
