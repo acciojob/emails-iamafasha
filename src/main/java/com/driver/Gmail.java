@@ -21,7 +21,7 @@ public class Gmail extends Email {
         // If the inbox is full, move the oldest mail in the inbox to trash and add the new mail to inbox.
         if(inbox.size() == inboxCapacity){
             //tash lastests
-            final Mail old_mail = inbox.get(0);
+            Mail old_mail = inbox.get(0);
             inbox.remove(0);
             trash.add(old_mail);
         }
