@@ -38,9 +38,9 @@ public class Gmail extends Email {
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
 
         for(int i = 0; i < inbox.size() ;i++){
-            if(inbox.get(i).message == message){
+            if(message.equals(inbox.get(i).message)){
                 trash.add(inbox.get(i));
-                inbox.remove(inbox.get(i));
+                inbox.remove(i);
                 break;
             }
         }
