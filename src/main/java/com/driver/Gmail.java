@@ -12,19 +12,21 @@ public class Gmail extends Email {
     //Trash: Stores mails. Each mail has date (Date), sender (String), message (String)
     public Gmail(String emailId, int inboxCapacity) {
         super(emailId);
-        inbox = new ArrayList<Mail>();
-        trash = new ArrayList<Mail>();
+        inbox = new ArrayList<>();
+        trash = new ArrayList<>();
         this.inboxCapacity = inboxCapacity;
     }
 
     public void receiveMail(Date date, String sender, String message){
         // If the inbox is full, move the oldest mail in the inbox to trash and add the new mail to inbox.
-        if(inbox.size() >= inboxCapacity){
+        if(inbox.size() == inboxCapacity){
             //tash lastests
-            Mail old_mail = inbox.get(0);
-            trash.add(old_mail);
+            final Mail old_mail = inbox.get(0);
             inbox.remove(0);
+            trash.add(old_mail);
         }
+
+        inbox.add(new Mail(date, message, sender));
         // It is guaranteed that:
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
