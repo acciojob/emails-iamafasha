@@ -19,14 +19,29 @@ public class Email {
     }
 
     public void changePassword(String oldPassword, String newPassword){
-        if(oldPassword.equals(password) &&
-             newPassword.length() >= 8 &&
-             newPassword.matches(".*[a-z].*") &&
-             newPassword.matches(".*[A-Z].*") &&
-             newPassword.matches(".*\\d.*") &&
-             newPassword.matches(".*[^a-zA-Z0-9].*")
-        ){
-            this.password = newPassword;
+        boolean flagUp = false, flagLow = false, flagDig = false, flagSpcl = false;
+        if (this.password.equals(oldPassword)){
+            if (newPassword.length() >= 8){
+                for (int i=0; i<newPassword.length(); i++){
+                    char chr = newPassword.charAt(i);
+                    if (chr >= 65 && chr <= 90){
+                        flagUp = true;
+                    }
+                    else if (chr >= 97 && chr <= 122){
+                        flagLow = true;
+                    }
+                    else if (chr >= 48 && chr <=57){
+                        flagDig = true;
+                    }
+                    else{
+                        flagSpcl = true;
+                    }
+                    if (flagUp && flagLow && flagDig && flagSpcl){
+                        this.password = newPassword;
+                        break;
+                    }
+                }
+            }
         }
         //Change password only if the oldPassword is equal to current password and the new password meets all of the following:
         // 1. It contains at least 8 characters
